@@ -1,8 +1,9 @@
 [apps]
 app-1 ansible_host=10.0.0.100
+prometheus-server ansible_host=10.0.1.2
 
 [prometheus]
-prometheus-server ansible_host=10.0.0.101
+prometheus-server ansible_host=10.0.1.2
 
 
 [all:vars]

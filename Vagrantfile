@@ -15,7 +15,7 @@ Vagrant.configure("2") do |config|
   
   #set limit specs vm virtualbox to 1 cpu & 256 mb mem
   config.vm.provider :virtualbox do |v|
-    v.memory = 256
+    v.memory = 384
     v.cpus = 1
     v.linked_clone = true
   end
@@ -28,12 +28,12 @@ Vagrant.configure("2") do |config|
   #node-exporter
   config.vm.define "prometheus" do |app|
     app.vm.hostname = "prometheus.vagrant.local"
-    app.vm.network :private_network, ip: "10.0.1.1"
+    app.vm.network :private_network, ip: "10.0.1.2"
   end
 
   config.vm.define "grafana" do |app|
     app.vm.hostname = "grafana.vagrant.local"
-    app.vm.network :private_network, ip: "10.0.1.2"
+    app.vm.network :private_network, ip: "10.0.1.3"
   end
    
 end
