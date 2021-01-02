@@ -35,5 +35,10 @@ Vagrant.configure("2") do |config|
     app.vm.hostname = "grafana.vagrant.local"
     app.vm.network :private_network, ip: "10.0.1.3"
   end
-   
+  
+  config.vm.define "grafana-loki" do |app|
+    app.vm.hostname = "grafana-loki.vagrant.local"
+    app.vm.network :private_network, ip: "10.0.1.4"
+  end
+
 end
