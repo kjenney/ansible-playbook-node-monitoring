@@ -1,3 +1,4 @@
 .vagrant
-key/*
+key/vagrant-key
+key/vagrant-key.pub
 .ssh.config
