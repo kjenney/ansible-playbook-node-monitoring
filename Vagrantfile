@@ -10,9 +10,9 @@ Vagrant.configure("2") do |config|
   config.vm.provision 'shell', inline: 'mkdir -p /root/.ssh'
   config.vm.provision 'shell', inline: "echo #{ssh_pub_key} >> /root/.ssh/authorized_keys"
   config.vm.provision 'shell', inline: "echo #{ssh_pub_key} >> /home/vagrant/.ssh/authorized_keys", privileged: false
-  
+
   config.vm.box = "ubuntu/focal64"
-  
+
   #set limit specs vm virtualbox to 1 cpu & 256 mb mem
   config.vm.provider :virtualbox do |v|
     v.memory = 384
@@ -29,13 +29,15 @@ Vagrant.configure("2") do |config|
   config.vm.define "prometheus" do |app|
     app.vm.hostname = "prometheus.vagrant.local"
     app.vm.network :private_network, ip: "10.0.1.2"
+    app.vm.network "forwarded_port", guest: 9090, host: 9090
   end
 
   config.vm.define "grafana" do |app|
     app.vm.hostname = "grafana.vagrant.local"
     app.vm.network :private_network, ip: "10.0.1.3"
+    app.vm.network "forwarded_port", guest: 3000, host: 3000
   end
-  
+
   config.vm.define "grafana-loki" do |app|
     app.vm.hostname = "grafana-loki.vagrant.local"
     app.vm.network :private_network, ip: "10.0.1.4"
