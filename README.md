@@ -6,16 +6,17 @@ For learning purpose
 - Ansible
 - Vagrant
 
+##### Generate SSH Key
+```
+ssh-keygen -t rsa -b 4096 -C "vagrant-key" -f $PWD/key/vagrant-key
+```
+
 #### Vagrant setup
 ```
 vagrant up
 ```
 
-#### Create symlink
+## Provision with Ansible
 ```
-ln -s ../roles playbooks/roles
-```
-##### Generate SSH Key
-```
-ssh-keygen -t rsa -b 4096 -C "vagrant-key" -f $PWD/key/vagrant-key
+ansible-playbook -i inventory playbooks/*.yaml
 ```
